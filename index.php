@@ -23,15 +23,28 @@
 
 ];
 
+function filter($bookItems, $key, $value){
+    $filteredItems = [];
+    foreach($bookItems as $bookItem){
+        if($bookItem[$key]===$value){
+            $filteredItems[] = $bookItem;
+        }
+    }
+    return $filteredItems;
+  
+
+}
+    $filteredbooks = filter($bookItems, 'author', 'debra fine')
+
 ?>
 
-<?php foreach($bookItems as $bookItem) :?>
-    <?php if($bookItem['author']==='david goggins'):?>
+<?php foreach($filteredbooks as $bookItem) :?>
+    
   <h1>  <?= $bookItem['author']?> <?= $bookItem['book']?> <?= $bookItem['year']?></h1>
-  <?php endif;?>
+ 
   <?php endforeach;?>
 
-  master branch
+
 
    
 
