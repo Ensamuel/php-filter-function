@@ -23,10 +23,10 @@
 
 ];
 
-function filter($bookItems, $key, $value){
+function filter($items, $filterfunction){
     $filteredItems = [];
-    foreach($bookItems as $bookItem){
-        if($bookItem[$key]===$value){
+    foreach($items as $bookItem){
+        if($filterfunction($bookItem)){
             $filteredItems[] = $bookItem;
         }
     }
@@ -34,7 +34,9 @@ function filter($bookItems, $key, $value){
   
 
 }
-    $filteredbooks = filter($bookItems, 'author', 'debra fine')
+    $filteredbooks = filter($bookItems, function($bookItem){
+        return $bookItem['author'] === 'debra fine';
+    })
 
 ?>
 
