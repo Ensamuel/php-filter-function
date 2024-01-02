@@ -23,18 +23,10 @@
 
 ];
 
-function filter($bookItems, $key, $value){
-    $filteredItems = [];
-    foreach($bookItems as $bookItem){
-        if($bookItem[$key]===$value){
-            $filteredItems[] = $bookItem;
-        }
-    }
-    return $filteredItems;
-  
 
-}
-    $filteredbooks = filter($bookItems, 'author', 'debra fine')
+    $filteredbooks = array_filter($bookItems, function($bookItem){
+        return $bookItem['author']==='david goggins';
+    })
 
 ?>
 
