@@ -1,43 +1,50 @@
 
-
-
-
-    <?php $bookItems = [
+<?php $bookItems = [
     [
         'author'=>'debra fine',
-        'book'=>'fine art of small talk'
+        'book'=>'fine art of small talk',
+        'year'=> '1950'
     ],
     [
         'author'=>'david goggins',
-        'book' => 'tough people last'
+        'book' => 'tough people last',
+        'year'=> '1951'
     ],
     [
         'author'=>'david goggins',
-        'book' => 'the brave and toughest suceed'
+        'book' => 'the brave and toughest suceed',
+        'year'=> '1961'
     ],
     [
         'author'=>'debra fine',
-        'book'=>'science of effective communication'
+        'book'=>'science of effective communication',
+        'year'=> '1962'
     ],
 
 ];
 
-function filterbyauthor($bookItems, $author){
-    $filteredbook = [];
+function filter($bookItems, $key, $value){
+    $filteredItems = [];
     foreach($bookItems as $bookItem){
-        if($bookItem['author'] === $author){
-            $filteredbook[] = $bookItem;
+        if($bookItem[$key]===$value){
+            $filteredItems[] = $bookItem;
         }
     }
-    return $filteredbook;
+    return $filteredItems;
+  
+
 }
+    $filteredbooks = filter($bookItems, 'author', 'debra fine')
 
 ?>
 
+<?php foreach($filteredbooks as $bookItem) :?>
+    
+  <h1>  <?= $bookItem['author']?> <?= $bookItem['book']?> <?= $bookItem['year']?></h1>
+ 
+  <?php endforeach;?>
 
-<?php foreach(filterbyauthor($bookItems, 'david goggins') as $books):?>
-    <h1><?php echo $books['author'] ?> </h1>
 
-<?php endforeach?>
+
    
 
